@@ -1,0 +1,30 @@
+I can't seem to get my git to clone as requested.  Here is the code I wanted to submit.
+
+makeCacheMatrix <- function(x = matrix()) {
+  # This function caches the inverse matrix for efficiency
+  m <- NULL
+  set <- function(y) {
+    x <<- y
+    m <<- NULL
+  }
+  get <- function() x
+  setinv <- function(solve) m <<- solve
+  getinv <- function() m
+  list(set = set, get = get,
+       setinv = setinv,
+       getinv = getinv)
+}
+
+
+cacheSolve <- function(x, ...) {
+  # This function uses the cached inverse, if available, for efficiency
+  m <- x$getinv()
+  if(!is.null(m)) {
+    message("getting cached data")
+    return(m)
+  }
+  data <- x$get()
+  m <- solve(data, ...)
+  x$setinv(m)
+  m
+}
