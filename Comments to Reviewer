@@ -1,7 +1,8 @@
-I can't seem to get my git to clone as requested.  Here is the code I wanted to submit.
+Dear Reviewer - I cannot get GitHub to do what I want, but the R code needed is here.  If you are very familiar with GitHub and can tell me what I'm missing to get this working, I'd appreciate it much.
 
 makeCacheMatrix <- function(x = matrix()) {
   # This function caches the inverse matrix for efficiency
+  # output is set, get, setinv,and getinv
   m <- NULL
   set <- function(y) {
     x <<- y
@@ -17,7 +18,8 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 cacheSolve <- function(x, ...) {
-  # This function uses the cached inverse, if available, for efficiency
+  # This function checks for a cached inverse
+  # If it exists, it uses it for efficiency
   m <- x$getinv()
   if(!is.null(m)) {
     message("getting cached data")
